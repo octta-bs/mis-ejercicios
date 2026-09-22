@@ -14,3 +14,16 @@ jobs:
           dotnet-version: '9.0.x'
       - run: dotnet build PracticaCI
       - run: dotnet test PracticaCI.Tests/PracticaCI.Tests.csproj
+
+      - name: Iniciar sesión en Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Construir y subir imagen
+        uses: docker/build-push-action@v6
+        with:
+          context: ./PracticaCI
+          push: true
+          tags: octta/practica-ci:latest
