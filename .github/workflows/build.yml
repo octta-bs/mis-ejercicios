@@ -13,4 +13,4 @@ jobs:
         with:
           dotnet-version: '9.0.x'
       - run: dotnet build PracticaCI
-      - run: dotnet test
+      - run: dotnet test PracticaCI.Tests
